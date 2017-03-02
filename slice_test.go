@@ -4,7 +4,7 @@ import "testing"
 
 func TestFilter(t *testing.T) {
 	val := []string{"", "1", "2"}
-	fn := func (val interface{}) bool {
+	fn := func(val interface{}) bool {
 		switch val.(type) {
 		case string:
 			if len(val.(string)) > 0 {

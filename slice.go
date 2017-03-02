@@ -1,8 +1,8 @@
 package slice
 
 import (
-	"reflect"
 	"errors"
+	"reflect"
 )
 
 func Filter(s interface{}, fn func(interface{}) bool) ([]interface{}, error) {
@@ -12,7 +12,7 @@ func Filter(s interface{}, fn func(interface{}) bool) ([]interface{}, error) {
 	}
 	var r []interface{}
 	for i := 0; i < val.Len(); i++ {
-		if (fn(val.Index(i).Interface())) {
+		if fn(val.Index(i).Interface()) {
 			r = append(r, val.Index(i).Interface())
 		}
 	}

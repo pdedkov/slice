@@ -1,13 +1,14 @@
 package slice_test
 
 import (
+	"fmt"
 	"github.com/pdedkov/slice"
-	"testing"
 )
 
-func TestFilter(t *testing.T) {
-	val := []string{"", "1", "2"}
-	fn := func(val interface{}) bool {
+func ExampleFilter() {
+	v := []string{"", "1", "2"}
+
+	ret, _ := slice.Filter(v, func(val interface{}) bool {
 		switch val.(type) {
 		case string:
 			if len(val.(string)) > 0 {
@@ -18,10 +19,9 @@ func TestFilter(t *testing.T) {
 		default:
 			return false
 		}
-	}
+	})
+	fmt.Printf("slice len is %d", len(ret))
 
-	arr, _ := slice.Filter(val, fn)
-	if len(arr) != 2 {
-		t.Errorf("fail %+v\n", arr)
-	}
+	// Output:
+	// slice len is 2
 }

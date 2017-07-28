@@ -5,6 +5,7 @@ import (
 	"reflect"
 )
 
+// Filter filter slice with filter function
 func Filter(s interface{}, fn func(interface{}) bool) ([]interface{}, error) {
 	val := reflect.ValueOf(s)
 	if val.Kind() != reflect.Slice {
